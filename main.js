@@ -171,6 +171,11 @@ document.addEventListener("keydown", ({ key }) => {
     word += key;
   }
   if (key === "Enter") {
+    const validWord = word in words;
+    if (!validWord) {
+      return;
+    }
+
     const selectedLetters = document.querySelectorAll(".on");
     const scoreAdd = selectedLetters.length;
     selectedLetters.forEach((element) =>
@@ -187,7 +192,6 @@ document.addEventListener("keydown", ({ key }) => {
   }
   clearWordElements();
   evaluateWordElements();
-  console.log({ key, word });
 });
 
 buildGrid();
