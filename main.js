@@ -8,6 +8,11 @@ const cols = 5;
 const characters =
   "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
 
+const fibbScore = [
+  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
+  4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811,
+];
+
 const randomLetter = () =>
   characters[Math.floor(Math.random() * characters.length)];
 
@@ -224,7 +229,6 @@ const addLetterTyped = (key) => {
 
 const handleKeyDown = ({ key }) => {
   const numberOfLetters = wordInputWrapperElement.children.length;
-  console.log({ key });
   if ((key === "Backspace" || key === "del") && numberOfLetters > 0) {
     const lastChild = wordInputWrapperElement.children[numberOfLetters - 1];
     wordInputWrapperElement.removeChild(lastChild);
@@ -233,7 +237,7 @@ const handleKeyDown = ({ key }) => {
   if (characters.includes(key)) {
     addLetterTyped(key);
   }
-  if (key === "clear") {
+  if (key === "clear" || key === "Escape") {
     clearWord();
   }
   if (key === " " || key === "shuffle") {
@@ -248,7 +252,15 @@ const handleKeyDown = ({ key }) => {
     }
 
     const selectedLetters = document.querySelectorAll(".on");
-    const scoreAdd = selectedLetters.length;
+    const scoreAdd = selectedLetters.length * fibbScore[word.length];
+
+    const scoreAddElement = document.querySelector("#score-add");
+    scoreAddElement.innerText = `+${scoreAdd}`;
+    scoreAddElement.classList.add("slide-up-score");
+    setTimeout(() => {
+      scoreAddElement.classList.remove("slide-up-score");
+    }, 1000);
+
     selectedLetters.forEach((element) =>
       element.parentElement.removeChild(element)
     );
