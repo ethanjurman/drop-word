@@ -11,11 +11,14 @@ const characters =
 const randomLetter = () =>
   characters[Math.floor(Math.random() * characters.length)];
 
-const addLetterBox = (row, col) => {
+const addLetterBubble = (row, col) => {
   const posX = row * 60;
   const posY = col * 60;
   const element = document.createElement("div");
   element.classList.add("letter-item");
+  element.onclick = ({ target: { innerText } }) => {
+    handleKeyDown({ key: innerText.toLowerCase() });
+  };
   element.dataset.row = row;
   element.dataset.col = col;
 
@@ -28,14 +31,65 @@ const addLetterBox = (row, col) => {
 const buildGrid = () => {
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      addLetterBox(row, col);
+      addLetterBubble(row, col);
     }
   }
 };
 
-const clearWordElements = () => {
+const shuffleGrid = () => {
+  const allLetters = [...document.querySelectorAll(".letter-item")];
+
+  let currentIndex = allLetters.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [allLetters[currentIndex], allLetters[randomIndex]] = [
+      allLetters[randomIndex],
+      allLetters[currentIndex],
+    ];
+  }
+
+  allLetters.forEach((letter, index) => {
+    const row = Math.floor(index / 5);
+    const col = Math.floor(index % 5);
+    letter.style.left = row * 60;
+    letter.style.top = col * 60;
+
+    letter.dataset.row = row;
+    letter.dataset.col = col;
+  });
+};
+
+const unselectLetters = () => {
   const allLetters = document.querySelectorAll(".letter-item");
   allLetters.forEach((elements) => elements.classList.remove("on"));
+};
+
+const clearWord = () => {
+  [...wordInputWrapperElement.children].forEach((letterElement) => {
+    wordInputWrapperElement.removeChild(letterElement);
+  });
+  word = "";
+};
+
+const markAsBadWord = () => {
+  const allLetters = document.querySelectorAll(".letter-typed");
+  allLetters.forEach((letterElement) => {
+    letterElement.classList.remove("added");
+    letterElement.classList.add("rejected");
+  });
+  setTimeout(() => {
+    const allLetters = document.querySelectorAll(".letter-typed");
+    allLetters.forEach((letterElement) => {
+      letterElement.classList.remove("rejected");
+    });
+  }, 150);
 };
 
 const adjacentItemsNotInChain = (chain) => {
@@ -130,40 +184,64 @@ const dropLetters = () => {
     const index3 = document.querySelector(`[data-row="3"][data-col="0"]`);
     const index4 = document.querySelector(`[data-row="4"][data-col="0"]`);
     if (!index0) {
-      addLetterBox(0, 0);
+      addLetterBubble(0, 0);
     }
     if (!index1) {
-      addLetterBox(1, 0);
+      addLetterBubble(1, 0);
     }
     if (!index2) {
-      addLetterBox(2, 0);
+      addLetterBubble(2, 0);
     }
     if (!index3) {
-      addLetterBox(3, 0);
+      addLetterBubble(3, 0);
     }
     if (!index4) {
-      addLetterBox(4, 0);
+      addLetterBubble(4, 0);
     }
   }
 };
 
+const addLetterTyped = (key) => {
+  const newLetter = document.createElement("div");
+  newLetter.classList.add("letter-typed");
+  newLetter.classList.add("added");
+  newLetter.innerText = key;
+  newLetter.onclick = (event) => {
+    const wordArray = word.split("");
+    const element = event.target;
+    element.parentElement.removeChild(element);
+    wordArray.splice(elementIndex, 1);
+    word = wordArray.join("");
+    console.log({ word, elementIndex });
+    unselectLetters();
+    evaluateWordElements();
+  };
+  wordInputWrapperElement.appendChild(newLetter);
+  word += key;
+};
+
 const handleKeyDown = ({ key }) => {
   const numberOfLetters = wordInputWrapperElement.children.length;
+  console.log({ key });
   if ((key === "Backspace" || key === "del") && numberOfLetters > 0) {
     const lastChild = wordInputWrapperElement.children[numberOfLetters - 1];
     wordInputWrapperElement.removeChild(lastChild);
     word = word.slice(0, word.length - 1);
   }
   if (characters.includes(key)) {
-    const newLetter = document.createElement("div");
-    newLetter.classList.add("letter-typed");
-    newLetter.innerText = key;
-    wordInputWrapperElement.appendChild(newLetter);
-    word += key;
+    addLetterTyped(key);
+  }
+  if (key === "clear") {
+    clearWord();
+  }
+  if (key === " " || key === "shuffle") {
+    clearWord();
+    shuffleGrid();
   }
   if (key === "Enter" || key === "enter") {
     const validWord = word.toUpperCase() in words;
     if (!validWord) {
+      markAsBadWord();
       return;
     }
 
@@ -172,16 +250,11 @@ const handleKeyDown = ({ key }) => {
     selectedLetters.forEach((element) =>
       element.parentElement.removeChild(element)
     );
-    const allInputLetters = document.querySelectorAll(".letter-typed");
-    allInputLetters.forEach((element) =>
-      element.parentElement.removeChild(element)
-    );
-
-    word = "";
+    clearWord();
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = Number(scoreElement.innerText) + scoreAdd;
   }
-  clearWordElements();
+  unselectLetters();
   evaluateWordElements();
 };
 

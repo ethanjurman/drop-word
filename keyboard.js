@@ -1,9 +1,5 @@
 const buildKeyboard = ({ parent, onKeyPress }) => {
-  const keys = [
-    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-    ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-    ["enter", "z", "x", "c", "v", "b", "n", "m", "del"],
-  ];
+  const keys = [["enter", "shuffle", "clear"]];
   for (keyArray of keys) {
     const keyboardRow = document.createElement("div");
     keyboardRow.classList.add("keyboard-row");
@@ -19,4 +15,5 @@ const buildKeyboard = ({ parent, onKeyPress }) => {
     }
     parent.appendChild(keyboardRow);
   }
+  parent;
 };
