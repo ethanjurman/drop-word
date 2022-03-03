@@ -1,5 +1,5 @@
 const buildKeyboard = ({ parent, onKeyPress }) => {
-  const keys = [["enter", "shuffle", "clear"]];
+  const keys = [["clear", "shuffle", "enter"]];
   for (keyArray of keys) {
     const keyboardRow = document.createElement("div");
     keyboardRow.classList.add("keyboard-row");

@@ -209,10 +209,12 @@ const addLetterTyped = (key) => {
   newLetter.onclick = (event) => {
     const wordArray = word.split("");
     const element = event.target;
+    const elementIndex = [...element.parentElement.children].findIndex(
+      (item) => item === element
+    );
     element.parentElement.removeChild(element);
     wordArray.splice(elementIndex, 1);
     word = wordArray.join("");
-    console.log({ word, elementIndex });
     unselectLetters();
     evaluateWordElements();
   };
