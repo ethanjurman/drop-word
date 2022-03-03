@@ -180,6 +180,23 @@ const evaluateWordElements = () => {
   }
 };
 
+const dropLetters = () => {
+  const allLetters = document.querySelectorAll(".letter-item");
+  allLetters.forEach((element) => {
+    const { row, col } = element.dataset;
+    if (Number(col) == 4) {
+      return;
+    }
+    const emptyItemBelow = !document.querySelector(
+      `[data-row="${row}"][data-col="${Number(col) + 1}"]`
+    );
+    if (emptyItemBelow) {
+      element.dataset.col = Number(col) + 1;
+      element.style.top = 60 * Number(element.dataset.col);
+    }
+  });
+};
+
 const addLetterTyped = (key) => {
   const newLetter = document.createElement("div");
   newLetter.classList.add("letter-typed");
@@ -227,7 +244,7 @@ const handleKeyDown = ({ key }) => {
     }
 
     const selectedLetters = document.querySelectorAll(".on");
-    const scoreAdd = selectedLetters.length * fibbScore[word.length];
+    const scoreAdd = wordChains.length * fibbScore[word.length];
 
     const scoreAddElement = document.querySelector("#score-add");
     scoreAddElement.innerText = `+${scoreAdd}`;
@@ -239,7 +256,13 @@ const handleKeyDown = ({ key }) => {
     selectedLetters.forEach((element) =>
       element.parentElement.removeChild(element)
     );
-    logger(`${word.toUpperCase()}: +${scoreAdd}`);
+    if (scoreAdd > 0) {
+      logger(
+        `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
+          wordChains.length
+        }`
+      );
+    }
     clearWord();
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = Number(scoreElement.innerText) + scoreAdd;
@@ -255,3 +278,7 @@ buildKeyboard({
   onKeyPress: handleKeyDown,
   parent: document.querySelector("#keyboard"),
 });
+
+setInterval(() => {
+  dropLetters();
+}, 120);

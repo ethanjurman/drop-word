@@ -143,15 +143,19 @@ body {
 
 @keyframes slideInAndOut {
   0% {
-    transform: translateY(40px);
+    transform: translateY(100px);
     color: rgba(0, 0, 0, 0);
   }
-  50% {
-    transform: translateY(0px);
+  25% {
+    transform: translateY(60px);
+    color: rgba(0, 0, 0, 1);
+  }
+  75% {
+    transform: translateY(60px);
     color: rgba(0, 0, 0, 1);
   }
   100% {
-    transform: translateY(-40px);
+    transform: translateY(20px);
     color: rgba(0, 0, 0, 0);
   }
 }
@@ -218,6 +222,14 @@ body {
     transform: translateY(0%);
   }
 }
+@keyframes slideLoggerOut {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(200%);
+  }
+}
 .logger {
   display: none;
   position: fixed;
@@ -235,4 +247,11 @@ body {
   animation: slideLoggerIn 1s;
   overflow: auto;
   cursor: pointer;
+}
+.logger > div {
+  text-transform: initial;
+}
+.logger-leave {
+  animation: slideLoggerOut 0.5s;
+  transform: translateY(200%);
 }

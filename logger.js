@@ -1,5 +1,4 @@
 const getLogger = () => {
-  const body = document.querySelector("body");
   let logItems = [];
   const addItems = (newLogItem) => {
     const isShuffle = newLogItem === "Shuffle";
@@ -24,14 +23,28 @@ const getLogger = () => {
 
   // on logger click, close it
   loggerBaseElement.onclick = () => {
-    loggerBaseElement.style.display = "none";
+    loggerBaseElement.classList.add("logger-leave");
+    setTimeout(() => {
+      loggerBaseElement.classList.remove("logger-leave");
+      loggerBaseElement.style.display = "none";
+    }, 1000);
   };
 
   // on score click, toggle log
   const scoreElement = document.querySelector("#score-wrapper");
   scoreElement.onclick = () => {
-    loggerBaseElement.style.display =
-      loggerBaseElement.style.display === "block" ? "none" : "block";
+    const isLoggerVisible = loggerBaseElement.style.display === "block";
+    if (isLoggerVisible) {
+      // if logger up, close it
+      loggerBaseElement.classList.add("logger-leave");
+      setTimeout(() => {
+        loggerBaseElement.classList.remove("logger-leave");
+        loggerBaseElement.style.display = "none";
+      }, 1000);
+    } else {
+      // else change it to be visible
+      loggerBaseElement.style.display = "block";
+    }
   };
 
   document.body.appendChild(loggerBaseElement);

@@ -255,7 +255,7 @@ const handleKeyDown = ({ key }) => {
     }
 
     const selectedLetters = document.querySelectorAll(".on");
-    const scoreAdd = selectedLetters.length * fibbScore[word.length];
+    const scoreAdd = wordChains.length * fibbScore[word.length];
 
     const scoreAddElement = document.querySelector("#score-add");
     scoreAddElement.innerText = `+${scoreAdd}`;
@@ -267,7 +267,13 @@ const handleKeyDown = ({ key }) => {
     selectedLetters.forEach((element) =>
       element.parentElement.removeChild(element)
     );
-    logger(`${word.toUpperCase()}: +${scoreAdd}`);
+    if (scoreAdd > 0) {
+      logger(
+        `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
+          wordChains.length
+        }`
+      );
+    }
     clearWord();
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = Number(scoreElement.innerText) + scoreAdd;
@@ -283,6 +289,7 @@ buildKeyboard({
   onKeyPress: handleKeyDown,
   parent: document.querySelector("#keyboard"),
 });
+
 setInterval(() => {
   dropLetters();
 }, 120);
