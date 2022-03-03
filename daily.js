@@ -73,9 +73,10 @@ const shuffleGrid = () => {
     ];
   }
 
+  const boxSize = Math.ceil(Math.sqrt(allLetters.length));
   allLetters.forEach((letter, index) => {
-    const row = Math.floor(index / 5);
-    const col = Math.floor(index % 5);
+    const row = Math.floor(index / boxSize);
+    const col = Math.floor(index % boxSize);
     letter.style.left = row * 60;
     letter.style.top = col * 60;
 
