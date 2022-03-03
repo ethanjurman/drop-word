@@ -4,6 +4,8 @@ Drop word is a simple puzzle word game, with an endless and daily puzzle mode!
 
 It is mobile and desktop friendly, and is written in pure vanilla JavaScript.
 
+**Play here: https://ethanjurman.github.io/drop-word/index.html**
+
 <img src="https://user-images.githubusercontent.com/1131494/156527269-029ed847-29ee-4eee-8c0f-40b6d45407bf.png" width="300px" />
 
 
