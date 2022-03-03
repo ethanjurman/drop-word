@@ -5,7 +5,6 @@ let word = "";
 
 const rows = 5;
 const cols = 5;
-// A-9, B-2, C-2, D-4, E-12, F-2, G-3, H-2, I-9, J-1, K-1, L-4, M-2, N-6, O-8, P-2, Q-1, R-6, S-4, T-6, U-4, V-2, W-2, X-1, Y-2, Z-1
 const characters =
   "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
 
@@ -23,14 +22,6 @@ const addLetterBox = (row, col) => {
   element.style.left = posX;
   element.style.top = posY;
   element.innerText = randomLetter();
-  // element.onclick = (event) => {
-  //   event.preventDefault();
-  //   if (element.classList.contains("on")) {
-  //     element.classList.remove("on");
-  //   } else {
-  //     element.classList.add("on");
-  //   }
-  // };
   letterGridElement.appendChild(element);
 };
 
@@ -66,6 +57,7 @@ const adjacentItemsNotInChain = (chain) => {
 
 const evaluateWordElements = () => {
   if (!word) {
+    wordChains = [];
     return;
   }
   const allLetters = document.querySelectorAll(".letter-item");
@@ -110,7 +102,6 @@ const evaluateWordElements = () => {
   // actually change style of those elements;
   for (chain of wordChains) {
     for (element of chain) {
-      console.log({ element, chain, wordChains });
       element.classList.add("on");
     }
   }
@@ -156,9 +147,9 @@ const dropLetters = () => {
   }
 };
 
-document.addEventListener("keydown", ({ key }) => {
+const handleKeyDown = ({ key }) => {
   const numberOfLetters = wordInputWrapperElement.children.length;
-  if (key === "Backspace" && numberOfLetters > 0) {
+  if ((key === "Backspace" || key === "del") && numberOfLetters > 0) {
     const lastChild = wordInputWrapperElement.children[numberOfLetters - 1];
     wordInputWrapperElement.removeChild(lastChild);
     word = word.slice(0, word.length - 1);
@@ -170,8 +161,8 @@ document.addEventListener("keydown", ({ key }) => {
     wordInputWrapperElement.appendChild(newLetter);
     word += key;
   }
-  if (key === "Enter") {
-    const validWord = word in words;
+  if (key === "Enter" || key === "enter") {
+    const validWord = word.toUpperCase() in words;
     if (!validWord) {
       return;
     }
@@ -192,9 +183,15 @@ document.addEventListener("keydown", ({ key }) => {
   }
   clearWordElements();
   evaluateWordElements();
-});
+};
+
+document.addEventListener("keydown", handleKeyDown);
 
 buildGrid();
+buildKeyboard({
+  onKeyPress: handleKeyDown,
+  parent: document.querySelector("#keyboard"),
+});
 setInterval(() => {
   dropLetters();
 }, 120);

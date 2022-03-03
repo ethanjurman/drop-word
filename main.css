@@ -1,3 +1,9 @@
+* {
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
 body {
   background: #222;
 }
@@ -11,10 +17,7 @@ body {
 }
 .letter-item {
   border-radius: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
   font-size: 24px;
-  text-transform: capitalize;
   color: black;
   position: absolute;
   background-color: #ccc;
@@ -56,22 +59,33 @@ body {
   }
 }
 
+@keyframes popIn {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 #word-input-wrapper {
   text-align: center;
+  min-height: 80px;
 }
 
 .letter-typed {
   border-radius: 20px;
   background: lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
   font-size: 44px;
   line-height: 60px;
-  text-transform: capitalize;
   display: inline-block;
   width: 60px;
   height: 60px;
   margin: 2px;
+  animation: popIn 0.1s;
 }
 
 #score-wrapper {
@@ -82,15 +96,33 @@ body {
 #score {
   border-radius: 20px;
   background: lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
   font-size: 34px;
   line-height: 150px;
-  text-transform: capitalize;
   display: inline-block;
   padding: 10px;
   box-shadow: 4px 4px 0px 0px gray;
   min-width: 300px;
   height: 100;
   transform: translate(0px, -60px);
+}
+
+#keyboard {
+  text-align: center;
+}
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+}
+.keyboard-row-key {
+  min-width: 26px;
+  height: 26px;
+  display: inline-block;
+  background: #ccc;
+  margin: 3px 3px;
+  font-size: 26px;
+  line-height: 26px;
+  padding: 16px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
 }
