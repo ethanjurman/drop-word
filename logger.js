@@ -7,7 +7,7 @@ const getLogger = () => {
       logItems.length > 1 && logItems[logItems.length - 1].match("Shuffle");
     if (isShuffle && lastItemWasShuffle) {
       const numberOfPreviousShuffles =
-        Number(logItems[logItems.length - 1].split(" x")[1]) || 0;
+        Number(logItems[logItems.length - 1].split(" x")[1]) || 1;
       logItems.pop();
       logItems.push(`Shuffle x${numberOfPreviousShuffles + 1}`);
     } else {
