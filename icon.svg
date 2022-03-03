@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48mm"
+   height="48mm"
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.8578563"
+     inkscape:cx="122.99429"
+     inkscape:cy="105.14874"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#999999;stroke:none;stroke-width:0.101807;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="circle1016"
+       cx="33.737175"
+       cy="32.678837"
+       r="12.505332" />
+    <circle
+       style="fill:#ffffff;stroke:none;stroke-width:0.101807;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="circle1018"
+       cx="32.040398"
+       cy="30.982059"
+       r="12.505332" />
+    <circle
+       style="fill:#999999;stroke:none;stroke-width:0.101807;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="circle996"
+       cx="15.404737"
+       cy="15.404736"
+       r="12.505332" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.5742px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.212097"
+       x="35.816029"
+       y="20.245415"
+       id="text5250"
+       transform="rotate(24.698783)"><tspan
+         sodipodi:role="line"
+         id="tspan5248"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.5742px;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.212097"
+         x="35.816029"
+         y="20.245415">W</tspan></text>
+    <circle
+       style="fill:#ffffff;stroke:none;stroke-width:0.101807;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="path846"
+       cx="13.70796"
+       cy="13.707958"
+       r="12.505332" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.5742px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.212097"
+       x="1.703505"
+       y="23.281878"
+       id="text2364"
+       transform="rotate(-26.438253)"><tspan
+         sodipodi:role="line"
+         id="tspan2362"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.5742px;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.212097"
+         x="1.703505"
+         y="23.281878">D</tspan></text>
+  </g>
+</svg>
