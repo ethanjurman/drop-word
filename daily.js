@@ -14,9 +14,20 @@ const fibbScore = [
   4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811,
 ];
 
-const randomLetter = () =>
-  characters[Math.floor(Math.random() * characters.length)];
-logger(`ENDLESS MODE`);
+const date = new Date();
+let seed = Number(
+  `${date.getYear()}${
+    date.getMonth() >= 10 ? date.getMonth() : "0" + date.getMonth()
+  }${date.getDay() >= 10 ? date.getDay() : "0" + date.getDay()}`
+);
+logger(`SEED: ${seed}`);
+
+function random() {
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+}
+
+const randomLetter = () => characters[Math.floor(random() * characters.length)];
 
 const addLetterBubble = (row, col) => {
   const posX = row * 60;
@@ -52,7 +63,7 @@ const shuffleGrid = () => {
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {
     // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
+    randomIndex = Math.floor(random() * currentIndex);
     currentIndex--;
 
     // And swap it with the current element.
@@ -168,46 +179,6 @@ const evaluateWordElements = () => {
   }
 };
 
-const dropLetters = () => {
-  const allLetters = document.querySelectorAll(".letter-item");
-  allLetters.forEach((element) => {
-    const { row, col } = element.dataset;
-    if (Number(col) == 4) {
-      return;
-    }
-    const emptyItemBelow = !document.querySelector(
-      `[data-row="${row}"][data-col="${Number(col) + 1}"]`
-    );
-    if (emptyItemBelow) {
-      element.dataset.col = Number(col) + 1;
-      element.style.top = 60 * Number(element.dataset.col);
-    }
-  });
-  const topRow = document.querySelectorAll(`[data-col="0"]`);
-  if (topRow.length < 5) {
-    const index0 = document.querySelector(`[data-row="0"][data-col="0"]`);
-    const index1 = document.querySelector(`[data-row="1"][data-col="0"]`);
-    const index2 = document.querySelector(`[data-row="2"][data-col="0"]`);
-    const index3 = document.querySelector(`[data-row="3"][data-col="0"]`);
-    const index4 = document.querySelector(`[data-row="4"][data-col="0"]`);
-    if (!index0) {
-      addLetterBubble(0, 0);
-    }
-    if (!index1) {
-      addLetterBubble(1, 0);
-    }
-    if (!index2) {
-      addLetterBubble(2, 0);
-    }
-    if (!index3) {
-      addLetterBubble(3, 0);
-    }
-    if (!index4) {
-      addLetterBubble(4, 0);
-    }
-  }
-};
-
 const addLetterTyped = (key) => {
   const newLetter = document.createElement("div");
   newLetter.classList.add("letter-typed");
@@ -283,6 +254,3 @@ buildKeyboard({
   onKeyPress: handleKeyDown,
   parent: document.querySelector("#keyboard"),
 });
-setInterval(() => {
-  dropLetters();
-}, 120);

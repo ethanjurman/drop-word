@@ -131,6 +131,7 @@ body {
   height: 100;
   transform: translate(0px, -60px);
   margin: 0px auto -25px auto;
+  cursor: pointer;
 }
 #score {
   display: inline-block;
@@ -180,4 +181,55 @@ body {
   border-radius: 18px;
   cursor: pointer;
   user-select: none;
+}
+
+#endless-mode-link,
+#daily-mode-link {
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  width: 276px;
+  height: 20px;
+  /* background: #eee; */
+  background-color: #ddf;
+  box-shadow: 4px 4px 0px 0px #888;
+  margin: 32px auto 0px;
+  font-size: 24px;
+  line-height: 20px;
+  padding: 12px 8px;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+#mode {
+  font-size: 16px;
+  transform: translateY(57px);
+  line-height: 13px;
+}
+
+@keyframes slideLoggerIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+.logger {
+  display: none;
+  position: fixed;
+  margin: 20px auto;
+  background: rgba(240, 240, 240, 0.95);
+  width: 313px;
+  border-radius: 20px;
+  padding: 20px;
+  z-index: 2;
+  bottom: 5px;
+  top: 55px;
+  left: 0px;
+  right: 0px;
+  box-shadow: 4px 4px 0px 0px #888;
+  animation: slideLoggerIn 1s;
+  overflow: auto;
+  cursor: pointer;
 }
