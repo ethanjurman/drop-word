@@ -1,6 +1,6 @@
 # drop-word
 
-Drop word is a simple puzzle word game, with an endless and daily puzzle mode!
+Drop word is a simple puzzle word game, with an endless, blitz and daily puzzle mode!
 
 It is mobile and desktop friendly, and is written in pure vanilla JavaScript.
 
@@ -14,4 +14,7 @@ After words clear, does not re-fill the board, try to get the highest score!
 
 ## Endless Mode
 After clearing words, board will re-fill with more and more letters! 
+
+## Blitz Mode
+Only get 90 seconds to make as many words as you can! 
 
