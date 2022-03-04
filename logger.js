@@ -33,7 +33,7 @@ const getLogger = ({ mode, seed }) => {
       setTimeout(() => {
         loggerBaseElement.classList.remove("logger-leave");
         loggerBaseElement.style.display = "none";
-      }, 1000);
+      }, 500);
     } else {
       // else change it to be visible
       loggerBaseElement.style.display = "block";
@@ -66,7 +66,7 @@ const getLogger = ({ mode, seed }) => {
     setTimeout(() => {
       loggerBaseElement.classList.remove("logger-leave");
       loggerBaseElement.style.display = "none";
-    }, 1000);
+    }, 500);
   };
   loggerBaseElement.appendChild(closeElement);
 

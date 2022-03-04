@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin: 0px;
+  height: 100%;
 }
 
 #letter-grid {
@@ -131,18 +132,14 @@ body {
   box-shadow: 4px 4px 0px 0px #888;
   min-width: 300px;
   height: 100;
-  transform: translate(0px, -60px);
+  transform: translate(0px, -50px);
   margin: 0px auto -25px auto;
 }
-#score {
-  display: inline-block;
-  padding-left: 50px;
-  transform: translateY(60px);
-}
+#score,
 #timer {
   display: inline-block;
   padding-left: 50px;
-  transform: translateY(60px);
+  transform: translateY(48px);
 }
 
 @keyframes slideInAndOut {
@@ -151,11 +148,11 @@ body {
     color: rgba(0, 0, 0, 0);
   }
   25% {
-    transform: translateY(60px);
+    transform: translateY(48px);
     color: rgba(0, 0, 0, 1);
   }
   75% {
-    transform: translateY(60px);
+    transform: translateY(48px);
     color: rgba(0, 0, 0, 1);
   }
   100% {
@@ -215,7 +212,14 @@ body {
 
 #mode {
   font-size: 16px;
-  transform: translateY(57px);
+  transform: translateY(45px);
+  line-height: 13px;
+}
+#title {
+  letter-spacing: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  transform: translateY(45px);
   line-height: 13px;
 }
 
@@ -306,13 +310,13 @@ body {
   padding: 10px 0px;
   border-radius: 10px;
   box-shadow: 2px 2px #55d;
-  bottom: 22px;
+  bottom: 40px;
   right: 20px;
   cursor: pointer;
 }
 .open-logger:active {
   box-shadow: 0px 0px #55d;
-  bottom: 20px;
+  bottom: 8px;
   right: 18px;
 }
 
@@ -322,4 +326,15 @@ body {
 .logger-leave {
   animation: slideLoggerOut 0.5s;
   transform: translateY(200%);
+}
+footer {
+  margin-top: auto;
+  color: #aaa;
+  font-size: 10px;
+  align-self: center;
+  text-transform: initial;
+}
+footer > a {
+  color: inherit;
+  /* text-decoration: none;   */
 }
