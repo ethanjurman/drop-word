@@ -286,10 +286,16 @@ body {
   background: #f88;
   padding: 10px 0px;
   border-radius: 10px;
+  transition: all 0.1s ease-in-out;
   box-shadow: 2px 2px #d55;
   top: 22px;
   right: 20px;
   cursor: pointer;
+}
+.close-logger:active {
+  box-shadow: 0px 0px #d55;
+  top: 20px;
+  right: 22px;
 }
 .open-logger {
   width: 30px;
@@ -303,6 +309,11 @@ body {
   bottom: 22px;
   right: 20px;
   cursor: pointer;
+}
+.open-logger:active {
+  box-shadow: 0px 0px #55d;
+  bottom: 20px;
+  right: 18px;
 }
 
 .logger > * div {
