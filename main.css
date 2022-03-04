@@ -197,18 +197,18 @@ body {
 #links {
   display: flex;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 28px;
 }
 #mode-link {
   color: inherit;
   text-decoration: none;
   text-align: center;
-  width: 132px;
+  width: 118px;
   background-color: #ddf;
   box-shadow: 4px 4px 0px 0px #888;
-  margin: 2px;
-  font-size: 24px;
-  line-height: 24px;
+  margin: 2px 8px;
+  font-size: 16px;
+  line-height: 16px;
   padding: 12px 8px;
   border-radius: 18px;
   cursor: pointer;
