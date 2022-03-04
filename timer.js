@@ -2,11 +2,11 @@ let paused = true;
 let startTime = null;
 let timer = null;
 
-document.querySelector("#timer").innerText = "2:00";
+document.querySelector("#timer").innerText = "1:30";
 
 const startTimer = () => {
   paused = false;
-  startTime = new Date().getTime() + 120000;
+  startTime = new Date().getTime() + 90000;
 };
 
 const updateTimer = () => {
