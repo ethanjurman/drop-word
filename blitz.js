@@ -257,12 +257,6 @@ const handleKeyDown = ({ key }) => {
       return;
     }
 
-    if (paused) {
-      makeTimer(() => {
-        document.querySelector(".logger").style.display = "block";
-      });
-    }
-
     const selectedLetters = document.querySelectorAll(".on");
     const scoreAdd = wordChains.length * fibbScore[word.length];
 
@@ -276,12 +270,19 @@ const handleKeyDown = ({ key }) => {
     selectedLetters.forEach((element) =>
       element.parentElement.removeChild(element)
     );
+    // if actual points, log and start timer (if paused)
     if (scoreAdd > 0) {
       logger(
         `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
           wordChains.length
         }`
       );
+
+      if (paused) {
+        makeTimer(() => {
+          document.querySelector(".logger").style.display = "block";
+        });
+      }
     }
     clearWord();
     const scoreElement = document.querySelector("#score");
