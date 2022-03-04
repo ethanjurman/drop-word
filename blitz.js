@@ -257,9 +257,11 @@ const handleKeyDown = ({ key }) => {
       return;
     }
 
-    makeTimer(() => {
-      document.querySelector(".logger").style.display = "block";
-    });
+    if (paused) {
+      makeTimer(() => {
+        document.querySelector(".logger").style.display = "block";
+      });
+    }
 
     const selectedLetters = document.querySelectorAll(".on");
     const scoreAdd = wordChains.length * fibbScore[word.length];
