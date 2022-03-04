@@ -2,7 +2,7 @@ const letterGridElement = document.querySelector("#letter-grid");
 const wordInputWrapperElement = document.querySelector("#word-input-wrapper");
 let wordChains = [];
 let word = "";
-const logger = getLogger();
+const logger = getLogger({ mode: "Daily", seed: null });
 
 const rows = 5;
 const cols = 5;
@@ -20,7 +20,6 @@ let seed = Number(
     date.getMonth() >= 10 ? date.getMonth() : "0" + date.getMonth()
   }${date.getDay() >= 10 ? date.getDay() : "0" + date.getDay()}`
 );
-logger(`SEED: ${seed}`);
 
 function random() {
   var x = Math.sin(seed++) * 10000;

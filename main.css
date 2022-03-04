@@ -133,7 +133,6 @@ body {
   height: 100;
   transform: translate(0px, -60px);
   margin: 0px auto -25px auto;
-  cursor: pointer;
 }
 #score {
   display: inline-block;
@@ -252,9 +251,61 @@ body {
   box-shadow: 4px 4px 0px 0px #888;
   animation: slideLoggerIn 1s;
   overflow: auto;
+}
+.seed-link {
+  width: calc(100% - 68px);
+  display: inline-block;
+  text-align: center;
+  background: #fff;
+  padding: 10px 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 1px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  box-shadow: 2px 2px #888;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+}
+.seed-link:active {
+  margin-top: 1px;
+  margin-left: 1px;
+  margin-right: 0px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px #888;
+}
+.copy-text {
+  font-size: 12px;
+}
+.close-logger {
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  background: #f88;
+  padding: 10px 0px;
+  border-radius: 10px;
+  box-shadow: 2px 2px #d55;
+  top: 22px;
+  right: 20px;
   cursor: pointer;
 }
-.logger > div {
+.open-logger {
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  background: #88f;
+  padding: 10px 0px;
+  border-radius: 10px;
+  box-shadow: 2px 2px #55d;
+  bottom: 22px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.logger > * div {
   text-transform: initial;
 }
 .logger-leave {

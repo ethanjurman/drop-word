@@ -2,7 +2,6 @@ const letterGridElement = document.querySelector("#letter-grid");
 const wordInputWrapperElement = document.querySelector("#word-input-wrapper");
 let wordChains = [];
 let word = "";
-const logger = getLogger();
 
 const rows = 5;
 const cols = 5;
@@ -14,9 +13,19 @@ const fibbScore = [
   4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811,
 ];
 
-const randomLetter = () =>
-  characters[Math.floor(Math.random() * characters.length)];
-logger(`BLITZ MODE`);
+const searchParams = new URLSearchParams(window.location.search);
+
+let seed =
+  Number(searchParams.get("seed")) || Math.floor(Math.random() * 100000000);
+
+const logger = getLogger({ mode: "Blitz", seed });
+
+function random() {
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+}
+
+const randomLetter = () => characters[Math.floor(random() * characters.length)];
 
 const addLetterBubble = (row, col) => {
   const posX = row * 60;
@@ -52,7 +61,7 @@ const shuffleGrid = () => {
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {
     // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
+    randomIndex = Math.floor(random() * currentIndex);
     currentIndex--;
 
     // And swap it with the current element.

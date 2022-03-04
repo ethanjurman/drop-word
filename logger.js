@@ -1,9 +1,11 @@
-const getLogger = () => {
+const getLogger = ({ mode, seed }) => {
   let logItems = [];
+
   const addItems = (newLogItem) => {
+    const logList = document.querySelector(".log-list");
     const isShuffle = newLogItem === "Shuffle";
     const lastItemWasShuffle =
-      logItems.length > 1 && logItems[logItems.length - 1].match("Shuffle");
+      logItems.length > 0 && logItems[logItems.length - 1].match("Shuffle");
     if (isShuffle && lastItemWasShuffle) {
       const numberOfPreviousShuffles =
         Number(logItems[logItems.length - 1].split(" x")[1]) || 1;
@@ -12,27 +14,18 @@ const getLogger = () => {
     } else {
       logItems.push(newLogItem);
     }
-    const loggerElement = document.querySelector(".logger");
-
-    loggerElement.innerHTML = logItems
-      .map((log) => `<div>${log}</div>`)
-      .join("\n");
+    logList.innerHTML = logItems.map((log) => `<div>${log}</div>`).join("\n");
   };
+
   const loggerBaseElement = document.createElement("div");
   loggerBaseElement.classList.add("logger");
 
-  // on logger click, close it
-  loggerBaseElement.onclick = () => {
-    loggerBaseElement.classList.add("logger-leave");
-    setTimeout(() => {
-      loggerBaseElement.classList.remove("logger-leave");
-      loggerBaseElement.style.display = "none";
-    }, 1000);
-  };
-
   // on score click, toggle log
   const scoreElement = document.querySelector("#score-wrapper");
-  scoreElement.onclick = () => {
+  const logOpenButton = document.createElement("div");
+  logOpenButton.classList.add("open-logger");
+
+  logOpenButton.onclick = () => {
     const isLoggerVisible = loggerBaseElement.style.display === "block";
     if (isLoggerVisible) {
       // if logger up, close it
@@ -46,6 +39,40 @@ const getLogger = () => {
       loggerBaseElement.style.display = "block";
     }
   };
+  scoreElement.appendChild(logOpenButton);
+
+  // copy seed button
+  const copySeedUrlElement = document.createElement("div");
+  if (seed) {
+    copySeedUrlElement.classList.add("seed-link");
+    copySeedUrlElement.innerHTML = `${mode} - seed: ${seed}<div class="copy-text">click here to copy link</div>`;
+    copySeedUrlElement.onclick = () => {
+      navigator.clipboard.writeText(`${window.location.href}?seed=${seed}`);
+    };
+  } else {
+    copySeedUrlElement.classList.add("seed-link");
+    copySeedUrlElement.innerHTML = `${mode} - ${new Date().toDateString()}<div class="copy-text">click here to copy link</div>`;
+    copySeedUrlElement.onclick = () => {
+      navigator.clipboard.writeText(`${window.location.href}`);
+    };
+  }
+  loggerBaseElement.appendChild(copySeedUrlElement);
+
+  // close button
+  const closeElement = document.createElement("div");
+  closeElement.classList.add("close-logger");
+  closeElement.onclick = () => {
+    loggerBaseElement.classList.add("logger-leave");
+    setTimeout(() => {
+      loggerBaseElement.classList.remove("logger-leave");
+      loggerBaseElement.style.display = "none";
+    }, 1000);
+  };
+  loggerBaseElement.appendChild(closeElement);
+
+  const logList = document.createElement("div");
+  logList.classList.add("log-list");
+  loggerBaseElement.appendChild(logList);
 
   document.body.appendChild(loggerBaseElement);
   return addItems;
