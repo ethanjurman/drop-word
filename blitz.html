@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Daily Drop</title>
+    <title>Drop Word</title>
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -13,7 +13,8 @@
     <script defer="true" src="./dictionary.js"></script>
     <script defer="true" src="./keyboard.js"></script>
     <script defer="true" src="./logger.js"></script>
-    <script defer="true" src="./daily.js"></script>
+    <script defer="true" src="./timer.js"></script>
+    <script defer="true" src="./blitz.js"></script>
 
     <!-- favicon stuff below here -->
     <link
@@ -46,7 +47,8 @@
 
   <body>
     <div id="score-wrapper">
-      <div id="mode">DAILY PUZZLE</div>
+      <div id="mode">BLITZ MODE</div>
+      <div id="timer"></div>
       <div id="score">0</div>
       <div id="score-add">+0</div>
     </div>
@@ -54,11 +56,8 @@
     <div id="word-input-wrapper"></div>
     <div id="keyboard"></div>
     <div id="links">
+      <a id="mode-link" href="./daily.html">Daily Puzzle</a>
       <a id="mode-link" href="./index.html">Endless Mode</a>
-      <a id="mode-link" href="./blitz.html"
-        >Blitz<br />
-        Mode</a
-      >
     </div>
   </body>
 </html>
