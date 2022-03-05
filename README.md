@@ -6,7 +6,7 @@ It is mobile and desktop friendly, and is written in pure vanilla JavaScript.
 
 **Play here: https://ethanjurman.github.io/drop-word/index.html**
 
-<img src="https://user-images.githubusercontent.com/1131494/156527269-029ed847-29ee-4eee-8c0f-40b6d45407bf.png" width="300px" />
+<img src="https://user-images.githubusercontent.com/1131494/156867685-cb3898e2-6512-450c-bac9-5106e59ea18a.png" width="400px" />
 
 
 ## Daily Puzzle
@@ -16,5 +16,5 @@ After words clear, does not re-fill the board, try to get the highest score!
 After clearing words, board will re-fill with more and more letters! 
 
 ## Blitz Mode
-Only get 90 seconds to make as many words as you can! 
+Only get 90 seconds to get as high of a score as you can! 
 
