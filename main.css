@@ -527,3 +527,18 @@ a.word-icon {
   transform: translate(2px, 2px);
   box-shadow: 0px 0px #888;
 }
+.mock-close-button {
+  width: 30px;
+  display: inline-block;
+  margin-right: 3px;
+  text-align: center;
+  background: #f88;
+  padding: 10px 0px;
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 2px 2px #d55;
+  top: 22px;
+  right: 20px;
+  cursor: pointer;
+  transform: translateY(2px);
+}
