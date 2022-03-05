@@ -1,5 +1,4 @@
 * {
-  text-transform: capitalize;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   -webkit-tap-highlight-color: transparent;
@@ -22,6 +21,7 @@ body {
   margin-bottom: 30px;
 }
 .letter-item {
+  text-transform: uppercase;
   border-radius: 100%;
   font-size: 24px;
   color: black;
@@ -43,8 +43,8 @@ body {
   user-select: none;
 }
 .on {
-  border: 4px solid green;
-  box-shadow: 4px 4px 0px 0px darkgreen;
+  border: 4px solid #6d6;
+  box-shadow: 4px 4px 0px 0px #3a3;
 }
 
 @keyframes rotateBlob {
@@ -98,6 +98,7 @@ body {
 }
 
 .letter-typed {
+  text-transform: uppercase;
   border-radius: 20px;
   background: #eee;
   box-shadow: 4px 4px 0px 0px #888;
@@ -177,6 +178,7 @@ body {
   justify-content: center;
 }
 .keyboard-row-key {
+  text-transform: capitalize;
   min-width: 26px;
   height: 26px;
   display: inline-block;
@@ -194,6 +196,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 28px;
+  margin-bottom: 5px;
 }
 #mode-link {
   color: inherit;
@@ -298,8 +301,8 @@ body {
 }
 .close-logger:active {
   box-shadow: 0px 0px #d55;
-  top: 20px;
-  right: 22px;
+  top: 24px;
+  right: 18px;
 }
 .open-logger {
   width: 30px;
@@ -319,6 +322,24 @@ body {
   bottom: 38px;
   right: 18px;
 }
+.open-instructions {
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  background: #6d6;
+  padding: 10px 0px;
+  border-radius: 10px;
+  box-shadow: 2px 2px #3a3;
+  bottom: 40px;
+  left: 20px;
+  cursor: pointer;
+}
+.open-instructions:active {
+  box-shadow: 0px 0px #3a3;
+  bottom: 38px;
+  left: 18px;
+}
 
 .logger > * div {
   text-transform: initial;
@@ -336,5 +357,116 @@ footer {
 }
 footer > a {
   color: inherit;
-  /* text-decoration: none;   */
+}
+#instructions {
+  text-transform: initial !important;
+  display: none;
+  position: fixed;
+  background: rgba(240, 240, 240, 1);
+  border-radius: 20px;
+  padding: 54px 20px 0px 20px;
+  z-index: 2;
+  bottom: 16px;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  box-shadow: 4px 4px 0px 0px #888;
+  transition: all 0.5s ease-in-out;
+  animation: slideLoggerIn 1s;
+  overflow: auto;
+  max-width: 400px;
+  margin: auto;
+}
+#instructions > * p {
+  width: 180px;
+  font-weight: normal;
+  text-align: center;
+}
+.instruction-paragraphs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+@keyframes spinIn {
+  0% {
+    transform: rotate(-1200deg);
+  }
+  70% {
+    transform: rotate(400deg);
+  }
+  90% {
+    transform: rotate(340deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinInSnap {
+  0% {
+    transform: rotate(-4800deg);
+  }
+  99% {
+    transform: rotate(380deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.circle-icon {
+  background: white;
+  padding: 4px;
+  border-radius: 7px;
+  box-shadow: 2px 2px #888;
+  min-width: 18.4px;
+  display: inline-block;
+}
+.squircle-icon {
+  background: white;
+  padding: 4px;
+  border-radius: 7px;
+  box-shadow: 2px 2px #888;
+  min-width: 17.4px;
+  display: inline-block;
+  animation: spinIn;
+}
+.squircle-icon:nth-child(1) {
+  animation-duration: 2s;
+}
+.squircle-icon:nth-child(2) {
+  animation-duration: 2.2s;
+}
+.squircle-icon:nth-child(3) {
+  animation-duration: 2.4s;
+}
+.squircle-icon:nth-child(4) {
+  animation-duration: 2.6s;
+}
+.squircle-icon:nth-child(6) {
+  animation-duration: 2.8s;
+}
+.squircle-icon:nth-child(7) {
+  animation-duration: 3s;
+}
+.squircle-icon:nth-child(8) {
+  animation-duration: 3.2s;
+}
+.squircle-icon:nth-child(9) {
+  animation: spinInSnap;
+  animation-duration: 4s;
+}
+.word-icon {
+  background: white;
+  padding: 4px;
+  margin: 2px;
+  border-radius: 7px;
+  box-shadow: 2px 2px #888;
+  display: inline-block;
+}
+.spacer-icon {
+  width: 8px;
+  display: inline-block;
+}
+.instructions-title {
+  text-align: center;
 }
