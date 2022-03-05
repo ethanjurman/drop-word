@@ -6,7 +6,7 @@ It is mobile and desktop friendly, and is written in pure vanilla JavaScript.
 
 **Play here: https://ethanjurman.github.io/drop-word/index.html**
 
-<img src="https://user-images.githubusercontent.com/1131494/156868819-573c8853-ad4b-4c30-8594-cb80e9eb1a91.jpg" width="400px" />
+<img src="https://user-images.githubusercontent.com/1131494/156868819-573c8853-ad4b-4c30-8594-cb80e9eb1a91.jpg" width="800px" />
 
 ## Daily Puzzle
 After words clear, does not re-fill the board, try to get the highest score!
