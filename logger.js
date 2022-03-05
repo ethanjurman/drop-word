@@ -47,7 +47,9 @@ const getLogger = ({ mode, seed }) => {
     copySeedUrlElement.classList.add("seed-link");
     copySeedUrlElement.innerHTML = `${mode} - seed: ${seed}<div class="copy-text">click here to copy link</div>`;
     copySeedUrlElement.onclick = () => {
-      navigator.clipboard.writeText(`${window.location.pathname}?seed=${seed}`);
+      navigator.clipboard.writeText(
+        `${window.location.origin}${window.location.pathname}?seed=${seed}`
+      );
     };
   } else {
     copySeedUrlElement.classList.add("seed-link");
