@@ -1,4 +1,4 @@
-# drop-word
+# Drop Word
 
 Drop word is a simple puzzle word game, with an endless, blitz and daily puzzle mode!
 
