@@ -83,7 +83,9 @@ const getLogger = ({ mode, seed }) => {
     const logListItems = document.querySelector(".log-list");
     const score = document.querySelector("#score").innerText;
     navigator.clipboard.writeText(
-      `${mode} (seed ${seed})\n${logListItems.innerText}\nScore: ${score}`
+      `${mode} ${
+        mode === "Daily" ? new Date().toDateString() : `(seed ${seed})`
+      }\n${logListItems.innerText}\nScore: ${score}`
     );
   };
   loggerBaseElement.appendChild(logCopyButton);
