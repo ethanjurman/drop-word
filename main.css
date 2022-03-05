@@ -140,7 +140,8 @@ body {
 #timer {
   display: inline-block;
   padding-left: 50px;
-  transform: translateY(48px);
+  transform: translateY(44px);
+  font-size: 32px;
 }
 
 @keyframes slideInAndOut {
@@ -246,7 +247,7 @@ body {
   position: fixed;
   margin: 20px auto;
   background: rgba(240, 240, 240, 0.95);
-  width: 313px;
+  max-width: 313px;
   border-radius: 20px;
   padding: 20px;
   z-index: 2;
