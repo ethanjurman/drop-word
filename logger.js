@@ -47,7 +47,7 @@ const getLogger = ({ mode, seed }) => {
     copySeedUrlElement.classList.add("seed-link");
     copySeedUrlElement.innerHTML = `${mode} - seed: ${seed}<div class="copy-text">click here to copy link</div>`;
     copySeedUrlElement.onclick = () => {
-      navigator.clipboard.writeText(`${window.location.href}?seed=${seed}`);
+      navigator.clipboard.writeText(`${window.location.pathname}?seed=${seed}`);
     };
   } else {
     copySeedUrlElement.classList.add("seed-link");
@@ -87,6 +87,30 @@ const getLogger = ({ mode, seed }) => {
     );
   };
   loggerBaseElement.appendChild(logCopyButton);
+
+  if (mode === "Daily") {
+    // restart button
+    const restart = document.createElement("a");
+    restart.classList.add("restart-button");
+    restart.href = window.location.pathname;
+    restart.innerText = "Restart";
+    loggerBaseElement.appendChild(restart);
+  }
+
+  if (mode !== "Daily") {
+    // restart button
+    const restart = document.createElement("a");
+    restart.classList.add("new-game-button");
+    restart.href = window.location.pathname;
+    restart.innerText = "New Game (new board)";
+    loggerBaseElement.appendChild(restart);
+    // restart w/ seed button
+    const restartWithSeed = document.createElement("a");
+    restartWithSeed.classList.add("restart-button");
+    restartWithSeed.href = `${window.location.pathname}?seed=${seed}`;
+    restartWithSeed.innerText = "Restart (same board)";
+    loggerBaseElement.appendChild(restartWithSeed);
+  }
 
   document.body.appendChild(loggerBaseElement);
   return addItems;

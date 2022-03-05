@@ -499,10 +499,31 @@ a.word-icon {
   box-shadow: 2px 2px #888;
   text-align: center;
   cursor: pointer;
-  transform: translate(0px 0px);
+  transform: translate(0px, 0px);
   user-select: none;
 }
 .log-copy-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px #888;
+}
+.new-game-button,
+.restart-button {
+  display: block;
+  background: #6d6;
+  padding: 4px;
+  border-radius: 7px;
+  margin-left: 0px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  box-shadow: 2px 2px #3a3;
+  text-align: center;
+  cursor: pointer;
+  transform: translate(0px, 0px);
+  user-select: none;
+}
+.new-game-button:active,
+.restart-button:active {
   transform: translate(2px, 2px);
   box-shadow: 0px 0px #888;
 }
