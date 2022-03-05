@@ -219,7 +219,6 @@ body {
   line-height: 13px;
 }
 #title {
-  letter-spacing: 4px;
   font-weight: bold;
   font-size: 18px;
   transform: translateY(45px);
@@ -356,8 +355,9 @@ footer {
   text-transform: initial;
   margin-bottom: 5px;
 }
-footer > a {
+a {
   color: inherit;
+  text-decoration: none;
 }
 #instructions {
   text-transform: initial !important;
@@ -367,7 +367,7 @@ footer > a {
   border-radius: 20px;
   padding: 54px 20px 0px 20px;
   z-index: 2;
-  bottom: 16px;
+  bottom: 24px;
   top: 16px;
   left: 16px;
   right: 16px;
@@ -448,6 +448,16 @@ footer > a {
   animation: spinInSnap;
   animation-duration: 4s;
 }
+.squircle-tiny {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px #888;
+  padding: 2px 4px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  transform: translateY(-4px);
+}
 .word-icon {
   background: white;
   padding: 4px;
@@ -456,12 +466,27 @@ footer > a {
   box-shadow: 2px 2px #888;
   display: inline-block;
 }
+a.word-icon {
+  background: #ddf;
+}
 .spacer-icon {
   width: 8px;
   display: inline-block;
 }
 .instructions-title {
   text-align: center;
+}
+.subtitle {
+  letter-spacing: 4px;
+  padding: 2px 32px;
+  padding-left: 42px;
+  text-align: center;
+  display: block;
+  margin: 12px auto 0px;
+  width: 110px;
+  background: white;
+  border-radius: 7px;
+  box-shadow: 2px 2px #888;
 }
 .log-copy-button {
   background: white;
