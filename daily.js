@@ -2,6 +2,7 @@ const letterGridElement = document.querySelector("#letter-grid");
 const wordInputWrapperElement = document.querySelector("#word-input-wrapper");
 let wordChains = [];
 let word = "";
+let gameEnd = false;
 const logger = getLogger({ mode: "Daily", seed: null });
 
 const rows = 5;
@@ -219,6 +220,9 @@ const addLetterTyped = (key) => {
 
 const handleKeyDown = ({ key }) => {
   const numberOfLetters = wordInputWrapperElement.children.length;
+  if (gameEnd) {
+    return;
+  }
   if ((key === "Backspace" || key === "del") && numberOfLetters > 0) {
     const lastChild = wordInputWrapperElement.children[numberOfLetters - 1];
     wordInputWrapperElement.removeChild(lastChild);
@@ -265,9 +269,42 @@ const handleKeyDown = ({ key }) => {
     clearWord();
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = Number(scoreElement.innerText) + scoreAdd;
+    checkIfAnyWordsLeft();
   }
   unselectLetters();
   evaluateWordElements();
+};
+
+const checkIfAnyWordsLeft = () => {
+  const boardLetterElements = document.querySelectorAll(".letter-item");
+  const scoreElement = document.querySelector("#score");
+  const boardLetterElementsArray = [...boardLetterElements];
+  if (boardLetterElementsArray.length === 0) {
+    const currentScore = Number(scoreElement.innerText);
+    const scoreAddElement = document.querySelector("#score-add");
+    scoreAddElement.innerText = `x3`;
+    scoreAddElement.classList.add("slide-up-score");
+    logger(`Board Clear: ${currentScore} x 3`);
+    setTimeout(() => {
+      scoreAddElement.classList.remove("slide-up-score");
+      const scoreElement = document.querySelector("#score");
+      scoreElement.innerText = currentScore * 3;
+    }, 1000);
+  }
+
+  const boardLetters = boardLetterElementsArray
+    .map((element) => element.innerText)
+    .sort()
+    .join("");
+  const isLastWord = !Object.keys(words).some((word) =>
+    boardLetters.includes([...word].sort().join(""))
+  );
+  if (isLastWord) {
+    gameEnd = true;
+    setTimeout(() => {
+      document.querySelector(".logger").style.display = "block";
+    }, 1200);
+  }
 };
 
 document.addEventListener("keydown", handleKeyDown);

@@ -70,9 +70,23 @@ const getLogger = ({ mode, seed }) => {
   };
   loggerBaseElement.appendChild(closeElement);
 
+  // log list
   const logList = document.createElement("div");
   logList.classList.add("log-list");
   loggerBaseElement.appendChild(logList);
+
+  // log copy button
+  const logCopyButton = document.createElement("div");
+  logCopyButton.classList.add("log-copy-button");
+  logCopyButton.innerText = "click to copy log";
+  logCopyButton.onclick = () => {
+    const logListItems = document.querySelector(".log-list");
+    const score = document.querySelector("#score").innerText;
+    navigator.clipboard.writeText(
+      `${mode} (seed ${seed})\n${logListItems.innerText}\nScore: ${score}`
+    );
+  };
+  loggerBaseElement.appendChild(logCopyButton);
 
   document.body.appendChild(loggerBaseElement);
   return addItems;

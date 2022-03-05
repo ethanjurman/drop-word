@@ -354,6 +354,7 @@ footer {
   font-size: 10px;
   align-self: center;
   text-transform: initial;
+  margin-bottom: 5px;
 }
 footer > a {
   color: inherit;
@@ -413,14 +414,6 @@ footer > a {
     transform: rotate(360deg);
   }
 }
-.circle-icon {
-  background: white;
-  padding: 4px;
-  border-radius: 7px;
-  box-shadow: 2px 2px #888;
-  min-width: 18.4px;
-  display: inline-block;
-}
 .squircle-icon {
   background: white;
   padding: 4px;
@@ -469,4 +462,22 @@ footer > a {
 }
 .instructions-title {
   text-align: center;
+}
+.log-copy-button {
+  background: white;
+  padding: 4px;
+  border-radius: 7px;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  box-shadow: 2px 2px #888;
+  text-align: center;
+  cursor: pointer;
+  transform: translate(0px 0px);
+  user-select: none;
+}
+.log-copy-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px #888;
 }

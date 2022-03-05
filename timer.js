@@ -23,7 +23,7 @@ const stopTimer = () => {
   paused = true;
 };
 
-const makeTimer = (onTimedone) => {
+const makeTimer = (onTimeDone) => {
   console.log("starting timer");
   startTimer();
   const intervalId = setInterval(() => {
@@ -31,7 +31,7 @@ const makeTimer = (onTimedone) => {
     if (timer <= 0) {
       stopTimer();
       clearInterval(intervalId);
-      onTimedone();
+      onTimeDone();
     }
   }, 120);
 };
