@@ -7,20 +7,46 @@ const logger = getLogger({ mode: "Daily", seed: null });
 
 const rows = 5;
 const cols = 5;
-const characters =
-  "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
+
+const dateObject = new Date();
+const year = dateObject.getYear();
+const month = dateObject.getMonth();
+const date = dateObject.getDate();
+
+let characters = "";
+let seed;
+
+// delete me after march 6th
+if (date <= 6) {
+  characters =
+    "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
+  seed = Number(
+    `${dateObject.getYear()}${
+      dateObject.getMonth() >= 10
+        ? dateObject.getMonth()
+        : "0" + dateObject.getMonth()
+    }${
+      dateObject.getDay() >= 10
+        ? dateObject.getDay()
+        : "0" + dateObject.getDay()
+    }`
+  );
+}
+
+// use new letter set and seed logic after march 6th
+if (date > 6) {
+  characters = "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
+  seed = Number(
+    `${year}${month >= 10 ? month : "0" + month}${
+      date >= 10 ? date : "0" + date
+    }`
+  );
+}
 
 const fibbScore = [
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
   4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811,
 ];
-
-const date = new Date();
-let seed = Number(
-  `${date.getYear()}${
-    date.getMonth() >= 10 ? date.getMonth() : "0" + date.getMonth()
-  }${date.getDay() >= 10 ? date.getDay() : "0" + date.getDay()}`
-);
 
 function random() {
   var x = Math.sin(seed++) * 10000;
@@ -318,3 +344,9 @@ buildKeyboard({
 setInterval(() => {
   dropLetters();
 }, 120);
+
+console.log(
+  [...document.querySelectorAll(".letter-item")].filter(
+    (e) => e.innerText == "R"
+  )
+);

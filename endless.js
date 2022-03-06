@@ -5,8 +5,14 @@ let word = "";
 
 const rows = 5;
 const cols = 5;
-const characters =
+
+// delete me after march 6th
+let characters =
   "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
+// use new letter set after march 6th
+if (new Date().getDate() > 6) {
+  characters = "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
+}
 
 const fibbScore = [
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
