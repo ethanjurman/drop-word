@@ -543,3 +543,19 @@ a.word-icon {
   cursor: pointer;
   transform: translateY(2px);
 }
+.how-to-play-gifs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.how-to-play-gif-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 8px;
+  font-weight: normal;
+  text-align: center;
+}
+.how-to-play-gif-item > img {
+  margin-top: 12px;
+}
