@@ -12,8 +12,14 @@ It is mobile and desktop friendly, and is written in pure vanilla JavaScript.
 After words clear, does not re-fill the board, try to get the highest score!
 
 ## Endless Mode
-After clearing words, board will re-fill with more and more letters! 
+After clearing words, board will re-fill with more and more letters!
 
 ## Blitz Mode
-Only get 90 seconds to get as high of a score as you can! 
+Only get 90 seconds to get as high of a score as you can!
 
+# Development
+
+You can open the files manually, or if you'd like to mimic a static web server, run the command below:
+```
+npx serve
+```
