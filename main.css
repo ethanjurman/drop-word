@@ -140,8 +140,8 @@ body {
 #timer {
   display: inline-block;
   padding-left: 50px;
-  transform: translateY(44px);
-  font-size: 32px;
+  transform: translateY(41px);
+  font-size: 28px;
 }
 
 @keyframes slideInAndOut {
