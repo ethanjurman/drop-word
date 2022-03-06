@@ -532,16 +532,34 @@ a.word-icon {
   width: 30px;
   display: inline-block;
   margin-right: 3px;
-  text-align: center;
   background: #f88;
   padding: 10px 0px;
   border-radius: 10px;
   transition: all 0.1s ease-in-out;
   box-shadow: 2px 2px #d55;
-  top: 22px;
-  right: 20px;
-  cursor: pointer;
-  transform: translateY(2px);
+  transform: translateY(2px) scale(0.8);
+}
+.mock-instruction-button {
+  width: 30px;
+  display: inline-block;
+  margin-right: 3px;
+  background: #6d6;
+  padding: 10px 0px;
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 2px 2px #3a3;
+  transform: translateY(2px) scale(0.8);
+}
+.mock-logger-button {
+  width: 30px;
+  display: inline-block;
+  margin-right: 3px;
+  background: #88f;
+  padding: 10px 0px;
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 2px 2px #55d;
+  transform: translateY(2px) scale(0.8);
 }
 .how-to-play-gifs {
   display: flex;
