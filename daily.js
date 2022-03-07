@@ -290,6 +290,19 @@ const handleKeyDown = ({ key }) => {
   evaluateWordElements();
 };
 
+const isWordValid = (validLetters, attemptedWord) => {
+  const validLettersSplitted = [...validLetters];
+  const attemptedWordSplitted = [...attemptedWord];
+  return attemptedWordSplitted.every((attemptedLetter) => {
+    const letterIndex = validLettersSplitted.indexOf(attemptedLetter);
+    if (letterIndex > -1) {
+      validLettersSplitted.splice(letterIndex, 1);
+      return true;
+    }
+    return false;
+  });
+};
+
 const checkIfAnyWordsLeft = () => {
   const boardLetterElements = document.querySelectorAll(
     ".letter-item:not(.letter-removed)"
@@ -313,10 +326,12 @@ const checkIfAnyWordsLeft = () => {
     .map((element) => element.innerText)
     .sort()
     .join("");
-  const isLastWord = !Object.keys(words).some((word) =>
-    boardLetters.includes([...word].sort().join(""))
-  );
-  if (isLastWord) {
+  for (wordItem in words) {
+    if (!isWordValid(boardLetters, wordItem)) {
+      delete words[wordItem];
+    }
+  }
+  if (Object.keys(words).length === 0) {
     gameEnd = true;
     setTimeout(() => {
       document.querySelector(".logger").style.display = "block";
