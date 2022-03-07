@@ -279,9 +279,19 @@ const handleKeyDown = ({ key }) => {
       scoreAddElement.classList.remove("slide-up-score");
     }, 1000);
 
-    selectedLetters.forEach((element) =>
-      element.parentElement.removeChild(element)
-    );
+    const scoreElement = document.querySelector("#score");
+    const startingScore = Number(scoreElement.innerText);
+    selectedLetters.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("letter-removed");
+        scoreElement.innerText = Math.floor(
+          startingScore + scoreAdd / (selectedLetters.length - index)
+        );
+        setTimeout(() => {
+          element.parentElement.removeChild(element);
+        }, 240 * index);
+      }, 120 * index);
+    });
     if (scoreAdd > 0) {
       logger(
         `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
@@ -290,8 +300,6 @@ const handleKeyDown = ({ key }) => {
       );
     }
     clearWord();
-    const scoreElement = document.querySelector("#score");
-    scoreElement.innerText = Number(scoreElement.innerText) + scoreAdd;
   }
   unselectLetters();
   evaluateWordElements();

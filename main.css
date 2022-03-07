@@ -577,3 +577,9 @@ a.word-icon {
 .how-to-play-gif-item > img {
   margin-top: 12px;
 }
+
+.letter-removed {
+  left: 120px !important;
+  top: -200px !important;
+  transform: scale(0.5);
+}
