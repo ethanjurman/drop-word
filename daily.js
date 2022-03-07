@@ -312,13 +312,13 @@ const checkIfAnyWordsLeft = () => {
   if (boardLetterElementsArray.length === 0) {
     const currentScore = Number(scoreElement.innerText);
     const scoreAddElement = document.querySelector("#score-add");
-    scoreAddElement.innerText = `x3`;
+    scoreAddElement.innerText = `+ 30`;
     scoreAddElement.classList.add("slide-up-score");
-    logger(`Board Clear: ${currentScore} x 3`);
+    logger(`Board Clear: +30`);
     setTimeout(() => {
       scoreAddElement.classList.remove("slide-up-score");
       const scoreElement = document.querySelector("#score");
-      scoreElement.innerText = currentScore * 3;
+      scoreElement.innerText = currentScore + 30;
     }, 1000);
   }
 
