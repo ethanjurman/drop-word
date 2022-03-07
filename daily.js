@@ -13,35 +13,11 @@ const year = dateObject.getYear();
 const month = dateObject.getMonth();
 const date = dateObject.getDate();
 
-let characters = "";
-let seed;
-
-// delete me after march 6th
-if (date <= 6) {
-  characters =
-    "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
-  seed = Number(
-    `${dateObject.getYear()}${
-      dateObject.getMonth() >= 10
-        ? dateObject.getMonth()
-        : "0" + dateObject.getMonth()
-    }${
-      dateObject.getDay() >= 10
-        ? dateObject.getDay()
-        : "0" + dateObject.getDay()
-    }`
-  );
-}
-
-// use new letter set and seed logic after march 6th
-if (date > 6) {
-  characters = "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
-  seed = Number(
-    `${year}${month >= 10 ? month : "0" + month}${
-      date >= 10 ? date : "0" + date
-    }`
-  );
-}
+const characters =
+  "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
+let seed = Number(
+  `${year}${month >= 10 ? month : "0" + month}${date >= 10 ? date : "0" + date}`
+);
 
 const fibbScore = [
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
@@ -294,8 +270,8 @@ const handleKeyDown = ({ key }) => {
         );
         setTimeout(() => {
           element.parentElement.removeChild(element);
-        }, 240 * index);
-      }, 120 * index);
+        }, 100 * index);
+      }, 100 * index);
     });
     if (scoreAdd > 0) {
       logger(
@@ -308,7 +284,7 @@ const handleKeyDown = ({ key }) => {
     clearWord();
     setTimeout(() => {
       checkIfAnyWordsLeft();
-    }, selectedLetters.length * 120 + 500);
+    }, selectedLetters.length * 100 + 500);
   }
   unselectLetters();
   evaluateWordElements();
@@ -318,7 +294,6 @@ const checkIfAnyWordsLeft = () => {
   const boardLetterElements = document.querySelectorAll(
     ".letter-item:not(.letter-removed)"
   );
-  console.log(boardLetterElements.length);
   const scoreElement = document.querySelector("#score");
   const boardLetterElementsArray = [...boardLetterElements];
   if (boardLetterElementsArray.length === 0) {
@@ -360,9 +335,3 @@ buildKeyboard({
 setInterval(() => {
   dropLetters();
 }, 120);
-
-console.log(
-  [...document.querySelectorAll(".letter-item")].filter(
-    (e) => e.innerText == "R"
-  )
-);

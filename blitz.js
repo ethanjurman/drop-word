@@ -6,13 +6,8 @@ let word = "";
 const rows = 5;
 const cols = 5;
 
-// delete me after march 6th
-let characters =
-  "aaaaaaaaaabbccddddeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnoooooooppqrrrrrrssssssttttttuuuuvvwwxyyz";
-// use new letter set after march 6th
-if (new Date().getDate() > 6) {
-  characters = "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
-}
+const characters =
+  "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
 
 const fibbScore = [
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
@@ -292,8 +287,8 @@ const handleKeyDown = ({ key }) => {
         );
         setTimeout(() => {
           element.parentElement.removeChild(element);
-        }, 240 * index);
-      }, 120 * index);
+        }, 100 * index);
+      }, 100 * index);
     });
     // if actual points, log and start timer (if paused)
     if (scoreAdd > 0) {
