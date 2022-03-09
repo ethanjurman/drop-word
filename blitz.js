@@ -292,11 +292,10 @@ const handleKeyDown = ({ key }) => {
     });
     // if actual points, log and start timer (if paused)
     if (scoreAdd > 0) {
-      logger(
-        `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
-          wordChains.length
-        }`
-      );
+      const multiplier =
+        wordChains.length == 1 ? "" : ` x ${wordChains.length}`;
+      logger(`${word.toUpperCase()}: +${fibbScore[word.length]}${multiplier}`);
+      setScoreInRecords("blitz", startingScore + scoreAdd);
 
       if (paused) {
         makeTimer(() => {

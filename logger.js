@@ -72,6 +72,22 @@ const getLogger = ({ mode, seed }) => {
   };
   loggerBaseElement.appendChild(closeElement);
 
+  // streak
+  const streakElement = document.createElement("div");
+  streakElement.classList.add("streak");
+  streakElement.innerText = 0;
+  loggerBaseElement.appendChild(streakElement);
+
+  // high score
+  const highScoreElement = document.createElement("div");
+  highScoreElement.classList.add("highscore");
+  highScoreElement.innerText =
+    localStorage.getItem(`${mode.toLowerCase()}-highscore`) || 0;
+  loggerBaseElement.appendChild(highScoreElement);
+
+  // line break
+  loggerBaseElement.appendChild(document.createElement("hr"));
+
   // log list
   const logList = document.createElement("div");
   logList.classList.add("log-list");

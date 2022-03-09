@@ -583,3 +583,17 @@ a.word-icon {
   top: -200px !important;
   transform: scale(0.5);
 }
+.log-list > div {
+  font-family: monospace;
+}
+.highscore:before {
+  content: "HIGHSCORE: ";
+}
+.streak:before {
+  content: "STREAK: ";
+}
+.streak,
+.highscore {
+  font-family: monospace;
+  color: #333;
+}

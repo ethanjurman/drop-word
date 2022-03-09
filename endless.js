@@ -288,11 +288,10 @@ const handleKeyDown = ({ key }) => {
       }, 100 * index);
     });
     if (scoreAdd > 0) {
-      logger(
-        `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
-          wordChains.length
-        }`
-      );
+      const multiplier =
+        wordChains.length == 1 ? "" : ` x ${wordChains.length}`;
+      logger(`${word.toUpperCase()}: +${fibbScore[word.length]}${multiplier}`);
+      setScoreInRecords("endless", startingScore + scoreAdd);
     }
     clearWord();
   }

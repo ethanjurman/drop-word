@@ -19,6 +19,8 @@ let seed = Number(
   `${year}${month >= 10 ? month : "0" + month}${date >= 10 ? date : "0" + date}`
 );
 
+addToStreak(seed);
+
 const fibbScore = [
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
   4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811,
@@ -260,7 +262,6 @@ const handleKeyDown = ({ key }) => {
 
     const scoreElement = document.querySelector("#score");
     const startingScore = Number(scoreElement.innerText);
-    scoreElement.innerText = startingScore + scoreAdd;
 
     selectedLetters.forEach((element, index) => {
       setTimeout(() => {
@@ -274,11 +275,10 @@ const handleKeyDown = ({ key }) => {
       }, 100 * index);
     });
     if (scoreAdd > 0) {
-      logger(
-        `${word.toUpperCase()}: +${fibbScore[word.length]} x ${
-          wordChains.length
-        }`
-      );
+      const multiplier =
+        wordChains.length == 1 ? "" : ` x ${wordChains.length}`;
+      logger(`${word.toUpperCase()}: +${fibbScore[word.length]}${multiplier}`);
+      setScoreInRecords("daily", startingScore + scoreAdd);
     }
 
     clearWord();
@@ -342,6 +342,7 @@ const checkIfAnyWordsLeft = () => {
 document.addEventListener("keydown", handleKeyDown);
 
 buildGrid();
+checkIfAnyWordsLeft();
 buildKeyboard({
   onKeyPress: handleKeyDown,
   parent: document.querySelector("#keyboard"),
