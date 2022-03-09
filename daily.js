@@ -132,6 +132,28 @@ const adjacentItemsNotInChain = (chain) => {
   return arrayReturn;
 };
 
+const isDuplicate = (array1, array2) => {
+  for (i in array1) {
+    if (array1[i] !== array2[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const removeDuplicateChains = () => {
+  return wordChains.filter((wordChain1, index) => {
+    if (
+      wordChains
+        .slice(index + 1)
+        .some((wordChain2) => isDuplicate(wordChain1, wordChain2))
+    ) {
+      return false;
+    }
+    return true;
+  });
+};
+
 const evaluateWordElements = () => {
   if (!word) {
     wordChains = [];
@@ -176,6 +198,7 @@ const evaluateWordElements = () => {
   }
   // filter bad sizes
   wordChains = wordChains.filter((chains) => chains.length === word.length);
+  wordChains = removeDuplicateChains();
   // actually change style of those elements;
   for (chain of wordChains) {
     for (element of chain) {
