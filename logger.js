@@ -73,10 +73,12 @@ const getLogger = ({ mode, seed }) => {
   loggerBaseElement.appendChild(closeElement);
 
   // streak
-  const streakElement = document.createElement("div");
-  streakElement.classList.add("streak");
-  streakElement.innerText = 0;
-  loggerBaseElement.appendChild(streakElement);
+  if (mode === "Daily") {
+    const streakElement = document.createElement("div");
+    streakElement.classList.add("streak");
+    streakElement.innerText = 0;
+    loggerBaseElement.appendChild(streakElement);
+  }
 
   // high score
   const highScoreElement = document.createElement("div");
