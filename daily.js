@@ -365,7 +365,7 @@ const checkIfAnyWordsLeft = () => {
 document.addEventListener("keydown", handleKeyDown);
 
 buildGrid();
-checkIfAnyWordsLeft();
+setTimeout(() => checkIfAnyWordsLeft(), 1500); // wait until board loads to start checking board letters
 buildKeyboard({
   onKeyPress: handleKeyDown,
   parent: document.querySelector("#keyboard"),
