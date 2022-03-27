@@ -14,7 +14,7 @@ const month = dateObject.getMonth();
 const date = dateObject.getDate();
 
 const characters =
-  "aaaabbccddeeeeffgghhiiiijjkkllmmnnoooppqqrrssttuuuuvvwxyyzz";
+  "aaaaaabbccddeeeeeeffgghhiiiiiijjkkllmmnnoooooppqqrrssttuuuuvvwxyyyzz";
 let seed = Number(
   `${year}${month >= 10 ? month : "0" + month}${date >= 10 ? date : "0" + date}`
 );
